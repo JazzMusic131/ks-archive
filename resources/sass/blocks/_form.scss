@@ -1,0 +1,93 @@
+.form-card {
+    form {
+        .field {
+            &:not(:last-child) {
+                margin-bottom: 0.75rem;
+            }
+
+            .label {
+                display: block;
+
+                &:not(:last-child) {
+                    margin-bottom: 0.5em;
+                }
+            }
+
+            .control {
+                box-sizing: border-box;
+                clear: both;
+                position: relative;
+
+                input[type=text] {
+                    max-width: 100%;
+                    width: 100%;
+                    padding: 0 2px;
+                    &#episode-number {
+                        width: 50%;
+                    }
+                }
+
+                .textarea {
+                    max-width: 100%;
+                    width: 100%;
+                    display: block;
+                    resize: vertical;
+                    max-height: 600px;
+                    min-height: 120px;
+                    padding: 2px 4px;
+                }
+
+                .error-msg {
+                    font-size: 0.8rem;
+                    margin-top: 0.36rem;
+                    color: #e3342f;
+                }
+
+                &.keywords {
+                    margin-bottom: 0.5em;
+                }
+            }
+
+            .keyword-wrap {
+                margin-bottom: 1rem;
+                background-color: rgba(0, 0, 0, 0.03);
+                padding: 16px 20px;
+                border-radius: 3px;
+
+                .remove_field {
+                    margin-top:1rem;
+                }
+            }
+
+            button {
+                &.btn {
+                    border: none;
+                    text-decoration: none;
+                    padding: 0.4rem 2rem;
+                    border-radius: 3px;
+                    transition: all 0.4s;
+                    cursor: pointer;
+
+                    &.submit {
+                        color: #fff;
+                        background-color: #3490dc;
+
+                        &:hover {
+                            background-color: #2a80c6;
+                            transition: all 0.4s;
+                        }
+                    }
+                }
+            }
+
+            &.btns {
+                text-align: right;
+                margin-top: 1.2rem;
+            }
+
+            &.add-more {
+                text-align: right;
+            }
+        }
+    }
+}
