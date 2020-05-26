@@ -15,124 +15,9 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-
-            .year-filter,
-            .type-filter {
-                display: flex;
-                margin-bottom: .5rem;
-            }
-
-            .year-filter .btn,
-            .type-filter .btn {
-                flex-grow: 1;
-                margin: auto 5px;
-                font-weight: 700;
-            }
-
-            .year-filter .btn:first-of-type,
-            .type-filter .btn:first-of-type {
-                margin-left: 0;
-            }
-
-            .year-filter .btn:last-of-type,
-            .type-filter .btn:last-of-type {
-                margin-right: 0;
-            }
-
-            .type-filter .btn.jazz-fight {
-                background-color: #ffddde;
-            }
-
-            .type-filter .btn.diamond-collection {
-                background-color: #b4dcff;
-            }
-
-            .search {
-                margin-bottom: 1rem;
-            }
-
-            .reset {
-                display: none;
-                width: 30px; 
-                height: 30px; 
-                padding: 2px 0px; 
-                border-radius: 15px; 
-                font-size: 15px; 
-                text-align: center;
-                position: absolute;
-                top: 49px;
-                left: -25px;
-            }
-
-            .table tbody tr {
-                transition: all 0.2s ease;
-            }
-
-            .table tbody tr.diamond-collection {
-                background-color: #b4dcff;
-            }
-
-            .table tbody tr.jazz-fight {
-                background-color: #ffddde;
-            }
-
-            .table tbody tr td {
-                font-weight: 700;
-            }
-        </style>
+        <style> html { background-color: #fff; color: #636b6f; font-family: 'Nunito', sans-serif; font-weight: 200; height: 100vh; margin: 0; }</style>
     </head>
-    <body>
+    <body class="home">
         <div class="flex-center position-ref">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -149,7 +34,7 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">{{ env('APP_NAME') }}</div>
+                <div class="title m-b-md">{{ env('APP_NAME') }}@if (env('APP_ENV') == 'local')<span class="subtitle"> DEV</span>@endif</div>
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
