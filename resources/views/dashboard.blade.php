@@ -1,3 +1,7 @@
+@if (!Auth::check())
+    <script>window.location = "/";</script>
+@endif
+
 @extends('layouts.app')
 
 @section('content')
