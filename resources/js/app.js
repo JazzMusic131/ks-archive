@@ -34,6 +34,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 // Custom JS
 $(function() {
 
+    // Check it out!
+    var clip = document.getElementById("checkitout");
+
     // Popover for episode descriptions
     $('[data-toggle="hover"]').popover({
         trigger: 'hover'
@@ -87,6 +90,35 @@ $(function() {
         $('.table tbody tr').each(function () {
 			$(this).show();
 		});
+    });
+
+    // Dark/Light mode toggle
+    $('.dark-mode-toggle').click(function() { 
+
+        if ($('body.home').hasClass('dark')) {
+
+            // Toggle Light Mode
+            $('body.home').removeClass('dark');
+            $('.table thead').removeClass('thead-light');
+            $('.table thead').addClass('thead-dark');
+            $('.table').removeClass('table-dark');
+            $('.table tbody tr td .btn').removeClass('btn-light');
+            $('.table tbody tr td .btn').addClass('btn-dark');
+            $('.dark-mode-toggle').text('Dark Mode');
+
+        } else {
+
+            // Toggle Dark Mode
+            $('body.home').addClass('dark');
+            $('.table thead').removeClass('thead-dark');
+            $('.table thead').addClass('thead-light');
+            $('.table').addClass('table-dark');
+            $('.table tbody tr td .btn').removeClass('btn-dark');
+            $('.table tbody tr td .btn').addClass('btn-light');
+            $('.dark-mode-toggle').text('Light Mode');
+
+        }
+        clip.play();
     });
 
 });
