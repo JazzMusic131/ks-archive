@@ -13,12 +13,18 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
 
         <!-- Styles -->
+        <link rel="icon" href="{{ URL::asset('/imgs/king.png') }}" type="image/x-icon"/>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <style> html { background-color: #fff; color: #636b6f; font-family: 'Nunito', sans-serif; font-weight: 200; height: 100vh; margin: 0; }</style>
     </head>
     <body class="home">
+        <audio id="checkitout">
+            <source src="{{ URL::asset('/audio/dave-checkitout.mp3') }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
         <div class="flex-center position-ref">
+            <button class="btn dark-mode-toggle">Dark Mode</button>
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
