@@ -49809,7 +49809,8 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 
 $(function () {
   // Check it out!
-  var clip = document.getElementById("checkitout"); // Popover for episode descriptions
+  var clip = document.getElementById("checkitout");
+  console.log("👋"); // Popover for episode descriptions
 
   $('[data-toggle="hover"]').popover({
     trigger: 'hover'

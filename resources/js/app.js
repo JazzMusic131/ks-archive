@@ -36,6 +36,7 @@ $(function() {
 
     // Check it out!
     var clip = document.getElementById("checkitout");
+    console.log("👋");
 
     // Popover for episode descriptions
     $('[data-toggle="hover"]').popover({
