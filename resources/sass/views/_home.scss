@@ -6,6 +6,7 @@ body.home {
     font-weight: 200;
     margin: 0;
     .dark-mode-toggle {
+        z-index: 3;
         position: fixed;
         bottom: 2%;
         right: 2%;
