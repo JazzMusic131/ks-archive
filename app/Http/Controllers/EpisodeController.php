@@ -71,7 +71,7 @@ class EpisodeController extends Controller
 
         $episode->save();
 
-        return redirect('/')->with('success', 'Episode added successfully!');
+        return redirect('/')->with('success-add', 'Episode added successfully!');
 
     }
 
@@ -94,7 +94,11 @@ class EpisodeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $episode = Episode::findOrFail($id);
+
+        return view('episodes.edit', [
+            'episode' => $episode
+        ]);
     }
 
     /**
@@ -106,7 +110,42 @@ class EpisodeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'episode-number' => 'required',
+            'title' => 'required',
+            'link' => 'required',
+            'published-date' => 'required'
+        ]);
+
+        $episode = Episode::findOrFail($id);
+
+        // Update Episode
+        $episode->episode_number = request('episode-number');
+        $episode->title = request('title');
+        $episode->link = request('link');
+        $episode->published_date = request('published-date');
+
+        // Jazz Fight? Diamond Collection? Reg?
+        if (request('jazz-fight') != null) {
+            $episode->jazz_fight = 1;
+            $episode->diamond_collection = 0;
+        } else if (request('diamond-collection') != null) {
+            $episode->jazz_fight = 0;
+            $episode->diamond_collection = 1;
+        } else {
+            $episode->jazz_fight = 0;
+            $episode->diamond_collection = 0;
+        }
+
+        if (request('description') != null) {
+            $episode->description = request('description');
+        } else {
+            $episode->description = null;
+        }
+
+        $episode->save();
+
+        return redirect('/')->with('success-update', 'Episode updated successfully!');
     }
 
     /**
