@@ -10980,6 +10980,7 @@ body.home {
   font-family: "Nunito", sans-serif;
   font-weight: 200;
   margin: 0;
+  min-height: 100vh;
   /* Dark Mode */
 }
 
@@ -11135,5 +11136,35 @@ body.home.dark .content .table tbody tr.jazz-fight td {
 
 body.home.dark .content .table tbody tr.diamond-collection td {
   color: #212529;
+}
+
+body.home .confirmation-messages {
+  padding: 2rem 1rem;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: -220px;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 102;
+  border: solid 1px #eee;
+  box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.1);
+  transition: bottom 0.33s ease;
+}
+
+body.home .confirmation-messages h3 {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0;
+  display: inline-block;
+}
+
+body.home .confirmation-messages img {
+  display: inline-block;
+}
+
+body.home .confirmation-messages.show {
+  bottom: 0;
 }
 

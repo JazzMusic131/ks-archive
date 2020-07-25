@@ -5,6 +5,7 @@ body.home {
     font-family: 'Nunito', sans-serif;
     font-weight: 200;
     margin: 0;
+    min-height:100vh;
     .dark-mode-toggle {
         z-index: 3;
         position: fixed;
@@ -158,6 +159,35 @@ body.home {
                     }
                 }
             }
+        }
+    }
+    .confirmation-messages {
+        padding: 2rem 1rem;
+        text-align: center;
+        width: 100%;
+        position: fixed;
+        bottom: -220px;
+        left: 0;
+        right: 0;
+        background-color:#fff;
+        z-index: 102;
+        border: solid 1px #eee;
+        box-shadow: 2px 2px 9px rgba(0,0,0,.1);
+        transition: bottom .33s ease;
+
+        h3 {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0;
+            display: inline-block;
+        }
+
+        img {
+            display: inline-block;
+        }
+
+        &.show {
+            bottom: 0;
         }
     }
 }
