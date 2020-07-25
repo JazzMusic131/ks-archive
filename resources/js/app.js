@@ -104,7 +104,8 @@ $(function() {
             $('.table thead').addClass('thead-dark');
             $('.table').removeClass('table-dark');
             $('.table tbody tr td .btn').removeClass('btn-light');
-            $('.table tbody tr td .btn').addClass('btn-dark');
+            $('.table tbody tr td .btn.listen').addClass('btn-dark');
+            $('.table tbody tr td .btn.edit').addClass('btn-primary');
             $('.dark-mode-toggle').text('Dark Mode');
 
         } else {

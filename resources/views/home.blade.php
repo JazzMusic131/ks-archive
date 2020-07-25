@@ -11,12 +11,36 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
         <!-- Styles -->
         <link rel="icon" href="{{ URL::asset('/imgs/king.png') }}" type="image/x-icon"/>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <style> html { background-color: #fff; color: #636b6f; font-family: 'Nunito', sans-serif; font-weight: 200; height: 100vh; margin: 0; }</style>
+        @if(session('success-add'))
+        <script>
+            $(function() {
+                $('.confirmation-messages h3').html('Episode added successfully!');
+                $('.confirmation-messages').addClass('show');
+                setTimeout(function () {
+                    $('.confirmation-messages').removeClass('show');
+                }, 3000);
+            });
+        </script>
+        @endif
+        @if(session('success-update'))
+        <script>
+            $(function() {
+                $('.confirmation-messages h3').html('Episode updated successfully!');
+                $('.confirmation-messages').addClass('show');
+                setTimeout(function () {
+                    $('.confirmation-messages').removeClass('show');
+                }, 3000);
+            });
+        </script>
+        @endif
     </head>
     <body class="home">
         <audio id="checkitout">
@@ -70,7 +94,13 @@
                             @if(count($episodes))
                                 <table class="table">
                                     <thead class="thead-dark">
-                                        <tr><th>Episode #</th><th>Title</th><th>Date</th><th style="width:20px;"></th></tr>
+                                        <tr>
+                                            <th>Episode #</th>
+                                            <th>Title</th>
+                                            <th>Date</th>
+                                            <th style="width:20px;"></th>
+                                            @auth<th style="width:20px;"></th>@endauth
+                                        </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($episodes as $episode)
@@ -84,7 +114,8 @@
                                             <td>{{ $episode->episode_number }}</td>
                                             <td data-toggle="hover" data-content="{{ $episode->description }}" data-placement="right">{{ $episode->title }}</td>
                                             <td class="date">{{ $episode->published_date }}</td>
-                                            <td><a href="{{ $episode->link }}" target="new" class="btn btn-dark btn-sm">Listen</a></td>
+                                            <td><a href="{{ $episode->link }}" target="new" class="btn btn-dark btn-sm listen">Listen</a></td>
+                                            @auth<td><a href="/episode/{{ $episode->id }}/edit" class="btn btn-primary btn-sm edit"><i class="fa fa-pencil-square-o"></i></a></td>@endauth
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -98,5 +129,6 @@
                 </div>
             </div>
         </div>
+        <div class="confirmation-messages"><img src="{{ URL::asset('/imgs/king.png') }}"><h3></h3></div>
     </body>
 </html>
