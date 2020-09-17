@@ -25,3 +25,4 @@ Route::post('/add', 'EpisodeController@store');
 // Routes for editing existing episodes
 Route::get('/episode/{id}/edit', 'EpisodeController@edit');
 Route::post('/episode/{id}/update', 'EpisodeController@update');
+Route::get('/episode/{id}/toggleDl', 'EpisodeController@toggleDl');
