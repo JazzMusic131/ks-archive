@@ -148,6 +148,18 @@ class EpisodeController extends Controller
         return redirect('/')->with('success-update', 'Episode updated successfully!');
     }
 
+    public function toggleDl($id, Request $request)
+    {
+        $episode = Episode::findOrFail($id);
+        $episode->downloaded = $request->status;
+        $episode->save();
+
+        return array(
+            'status' => 'success',
+            'message' => 'Download toggled!',
+        );
+    }
+
     /**
      * Remove the specified resource from storage.
      *

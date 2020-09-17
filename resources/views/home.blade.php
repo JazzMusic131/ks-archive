@@ -19,6 +19,27 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <style> html { background-color: #fff; color: #636b6f; font-family: 'Nunito', sans-serif; font-weight: 200; height: 100vh; margin: 0; }</style>
+        <script>
+            $(function() {
+
+                // Toggle episode downloaded
+                $('.toggle-downloaded').change(function() {
+                    var status = $(this).prop('checked') == true ? 1 : 0;
+                    var episodeid = $(this).attr('data-episodeid');
+
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: "episode/" + episodeid + "/toggleDl",
+                        data: { 'status': status },
+                        success: function(data) {
+                            console.log(data);
+                        }
+                    });
+                });
+
+            });
+        </script>
         @if(session('success-add'))
         <script>
             $(function() {
@@ -95,6 +116,7 @@
                                 <table class="table">
                                     <thead class="thead-dark">
                                         <tr>
+                                            @auth<th style="width:20px;"></th>@endauth
                                             <th>Episode #</th>
                                             <th>Title</th>
                                             <th>Date</th>
@@ -111,6 +133,7 @@
                                         @else
                                         <tr>
                                         @endif
+                                            @auth<td><input class="toggle-downloaded" data-episodeid="{{ $episode->id }}" type="checkbox" @if($episode->downloaded) checked @endif></td>@endauth
                                             <td>{{ $episode->episode_number }}</td>
                                             <td data-toggle="hover" data-content="{{ $episode->description }}" data-placement="right">{{ $episode->title }}</td>
                                             <td class="date">{{ $episode->published_date }}</td>
